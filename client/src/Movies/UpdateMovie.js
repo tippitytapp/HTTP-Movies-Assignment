@@ -6,7 +6,7 @@ const initialValue = {
     title: "",
     director: "",
     metascore: "",
-    stars:[]
+    stars:""
 }
 
 const UpdateMovie = props=> {
@@ -22,9 +22,13 @@ const UpdateMovie = props=> {
 
     const inputHandler = event => {
         event.persist();
+        let value = event.target.value;
+        if(event.target.name === "stars"){
+            value = event.target.value.split(',')
+        }
         setMovie({
             ...movie,
-            [event.target.name]: event.target.value
+            [event.target.name]: value
         })
     }
     // const starInputHandler = event => {
@@ -60,11 +64,8 @@ const UpdateMovie = props=> {
                 <label htmlFor="metascore">Metascore:   </label><br />
                 <input type="text" id="metascore" name="metascore" value={movie.metascore} onChange={inputHandler}/><br />
                 <label htmlFor="stars">Stars:   </label><br />
-                {movie.stars.map((item, i)=>{
-                    return (
-                        <input type="text" id="stars" key={i} name="stars" value={item} onChange={inputHandler}/>
-                    )
-                })}<br/>
+                <input type="text" id="stars" name="stars" value={movie.stars} onChange={inputHandler}/>
+                <br/>
                 <button>Update</button>
             </form>
         </div>
