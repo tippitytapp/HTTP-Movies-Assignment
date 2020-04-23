@@ -73,3 +73,5 @@ const UpdateMovie = props=> {
 }
 
 export default UpdateMovie;
+
+// <Route path="/add-movie" render={()=><AddMovie moviesList={movieList} setMoviesLis={setMovieList}>}
